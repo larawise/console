@@ -55,8 +55,8 @@ $larawise = new Application($app, new Dispatcher($app), 'Larawise (CLI)');
 | Developers can extend this section to add new commands as needed.
 |
 */
-//$larawise->add(new Larawise\CLI\DoctorCommand);
-//$larawise->add(new Larawise\CLI\NewCommand);
+$larawise->add(new Larawise\CLI\DoctorCommand);
+$larawise->add(new Larawise\CLI\NewCommand);
 
 /*
 |--------------------------------------------------------------------------
