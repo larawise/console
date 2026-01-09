@@ -1,0 +1,71 @@
+#!/usr/bin/env php
+<?php
+
+use Illuminate\Console\Application;
+use Illuminate\Container\Container;
+use Illuminate\Events\Dispatcher;
+
+/*
+|--------------------------------------------------------------------------
+| ℹ️ Larawise (Composer)
+|--------------------------------------------------------------------------
+|
+| Composer provides an automatically generated class loader for this application.
+| By including it here, we ensure all dependencies and classes are loaded seamlessly.
+| This guarantees that both framework and package classes are available at runtime.
+|
+*/
+if (file_exists($autoload = __DIR__ . '/../../../vendor/autoload.php')) {
+    require $autoload;
+} else {
+    require __DIR__ . '/../vendor/autoload.php';
+}
+
+/*
+|--------------------------------------------------------------------------
+| ℹ️ Larawise (Initialize)
+|--------------------------------------------------------------------------
+|
+| This section initializes the Larawise CLI application using Symfony Console.
+| It sets up the container and event dispatcher, providing a centralized entry point.
+| From here, framework-level and application-level commands can be executed.
+|
+*/
+$app = new Container;
+
+/*
+|--------------------------------------------------------------------------
+| ℹ️ Larawise (Application)
+|--------------------------------------------------------------------------
+|
+| This section creates the Larawise console application instance. It wires
+| the container and event dispatcher into Symfony Console. From here, the
+|  CLI environment is fully bootstrapped and ready to register commands.
+|
+*/
+$larawise = new Application($app, new Dispatcher($app), 'Larawise (CLI)');
+
+/*
+|--------------------------------------------------------------------------
+| ℹ️ Larawise (Commands)
+|--------------------------------------------------------------------------
+|
+| Here we register custom CLI commands to the Larawise application.
+| Each command encapsulates a specific task or utility for the system.
+| Developers can extend this section to add new commands as needed.
+|
+*/
+//$larawise->add(new Larawise\CLI\DoctorCommand);
+//$larawise->add(new Larawise\CLI\NewCommand);
+
+/*
+|--------------------------------------------------------------------------
+| ℹ️ Larawise (Run)
+|--------------------------------------------------------------------------
+|
+| This starts the CLI application, listening for user input continuously.
+| It parses the provided arguments and executes the appropriate command logic.
+| The run loop ensures commands are handled in a consistent and reliable manner.
+|
+*/
+$larawise->run();
